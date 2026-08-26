@@ -32,7 +32,7 @@ class AlarmTest(PT.TableBase):
                 self.pini_yes.amsg = None
             else:
                 self.pini_yes.alarm = MAJOR_ALARM
-                self.pini_yes.amsg = "odd number"
+                self.pini_yes.amsg = "even number"
 
             self.pini_yes.notify()
             print(count)
