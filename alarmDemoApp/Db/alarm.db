@@ -1,0 +1,14 @@
+record(ai, "PINI:NO") {
+    field(PINI, "NO")
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable alarm set pini_no")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "55")
+}
+record(ai, "PINI:YES") {
+    field(PINI, "YES")
+    field(DTYP, "Python Device")
+    field(INP,  "@devsup.ptable alarm set pini_yes")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "55")
+}
