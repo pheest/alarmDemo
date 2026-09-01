@@ -9,8 +9,10 @@ record(longout, "OUT_PINI:NO") {
 record(waveform, "OUT_PINI:YES") {
     field(PINI, "YES")
     field(FTVL, "LONG")
+    # NB, an array needs to have at least two elements. Or it is not an array.
     field(NELM, "2")
     field(DTYP, "Python Device")
+    # NB, waveform does not have an OUT field.
     field(INP,  "@devsup.ptable alarm set out_pini_yes")
 }
 
@@ -18,7 +20,7 @@ record(longin, "IN_PINI:NO") {
     field(PINI, "NO")
     field(DTYP, "Python Device")
     field(INP,  "@devsup.ptable alarm get in_pini_no")
-    field(VAL,  "6")
+    #field(VAL,  "6")
     field(SCAN, "I/O Intr")
 }
 
