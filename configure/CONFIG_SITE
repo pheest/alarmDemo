@@ -39,8 +39,8 @@ CHECK_RELEASE = YES
 #HOST_OPT = NO
 #CROSS_OPT = NO
 
-PYTHON=python3
-PY_VER?=3.14
+#PYTHON=python3
+#PY_VER?=3.14
 
 # These allow developers to override the CONFIG_SITE variable
 # settings without having to modify the configure/CONFIG_SITE

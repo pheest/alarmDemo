@@ -26,7 +26,7 @@ alarmDemo_DBD += pyDevSup.dbd
 # Add all the support libraries needed by this IOC
 alarmDemo_LIBS += pyDevSup$(PY_LD_VER)
 
-USR_SYS_LIBS += python$(PY_LD_VER)
+#USR_SYS_LIBS += python$(PY_LD_VER)
 
 # alarmDemo_registerRecordDeviceDriver.cpp derives from alarmDemo.dbd
 alarmDemo_SRCS += alarmDemo_registerRecordDeviceDriver.cpp
