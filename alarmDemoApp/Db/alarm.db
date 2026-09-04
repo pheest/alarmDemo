@@ -1,8 +1,16 @@
+record(longout, "TIMER") {
+    field(PINI, "NO")
+    field(DTYP, "Python Device")
+    field(OUT,  "@devsup.ptable alarm set timer")
+    #field(VAL,  "3")
+    field(SCAN, "5 second")
+}
+
 record(longout, "OUT_PINI:NO") {
     field(PINI, "NO")
     field(DTYP, "Python Device")
     field(OUT,  "@devsup.ptable alarm set out_pini_no")
-    field(VAL,  "4")
+    field(VAL,  "4")        # I can't quite figure out why this is required.
     field(SCAN, "5 second")
 }
 
@@ -28,6 +36,6 @@ record(longin, "IN_PINI:YES") {
     field(PINI, "YES")
     field(DTYP, "Python Device")
     field(INP,  "@devsup.ptable alarm get in_pini_yes")
-    field(VAL,  "7")
+    #field(VAL,  "7")
     field(SCAN, "I/O Intr")
 }
