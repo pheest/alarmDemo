@@ -6,22 +6,22 @@ record(longout, "TIMER") {
     field(SCAN, "5 second")
 }
 
-record(longout, "OUT_PINI:NO") {
-    field(PINI, "NO")
+record(longout, "OUT_PINI:YES") {
+    field(PINI, "YES")
     field(DTYP, "Python Device")
-    field(OUT,  "@devsup.ptable alarm set out_pini_no")
-    field(VAL,  "4")        # I can't quite figure out why this is required.
+    field(OUT,  "@devsup.ptable alarm set out_pini_yes")
+    field(VAL,  "4")
     field(SCAN, "5 second")
 }
 
-record(waveform, "OUT_PINI:YES") {
-    field(PINI, "YES")
+record(waveform, "OUT_PINI:NO") {
+    field(PINI, "NO")
     field(FTVL, "LONG")
     # NB, an array needs to have at least two elements. Or it is not an array.
     field(NELM, "2")
     field(DTYP, "Python Device")
     # NB, waveform does not have an OUT field.
-    field(INP,  "@devsup.ptable alarm set out_pini_yes")
+    field(INP,  "@devsup.ptable alarm set out_pini_no")
 }
 
 record(longin, "IN_PINI:NO") {

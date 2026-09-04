@@ -23,5 +23,3 @@ dbLoadRecords("db/alarm.db","P=")
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
-
-dbpf OUT_PINI:YES 5

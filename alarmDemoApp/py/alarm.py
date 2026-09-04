@@ -90,29 +90,30 @@ class AlarmTest(PT.TableBase):
             self.onproc_event.set()
         
             out_pini_no = getRecord("OUT_PINI:NO")
-            out_pini_no.VAL = self.count
-            # Scan not required here because it is a scalar output record.
-            # out_pini_no.scan(sync=False, force=0)
+            out_pini_no.VAL = [self.count]
+            # The record needs to be scanned to update the scan status.
+            # This is needed for a waveform record.
+            out_pini_no.scan(sync=False, force=0)
 
             out_pini_yes = getRecord("OUT_PINI:YES")
-            out_pini_yes.VAL = [self.count]
-            # The record needs to be scanned to update the scan status.
-            out_pini_yes.scan(sync=False, force=0)
+            out_pini_yes.VAL = self.count
+            # Scan not required here because it is a scalar output record.
+            # out_pini_no.scan(sync=False, force=0)
             self.count += 1
 
     def proc_out_pini_no(self):
         if self.count is not None:
-            self.set_alarms(self.out_pini_no, None)
-            print("out_pini_no", self.out_pini_no.value)
+            if len(self.out_pini_no.value) > 0:
+                # This is in setting the alarm status on what is an output record.
+                # This is - in effect - asyn:readback.
+                self.set_alarms(self.out_pini_no, None)
+                print("out_pini_no", self.out_pini_no.value)
 
         
     def proc_out_pini_yes(self):
         if self.count is None:
-            if len(self.out_pini_yes.value) > 0:
-                self.count = self.out_pini_yes.value[0]
+            self.count = self.out_pini_yes.value
         if self.count is not None:
-            # This is in setting the alarm status on what is an output record.
-            # This is - in effect - asyn:readback.
             self.set_alarms(None, self.out_pini_yes)
             print("out_pini_yes", self.out_pini_yes.value)
 
