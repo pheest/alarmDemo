@@ -11,6 +11,10 @@
 
 cd "${TOP}"
 
+epicsEnvSet("PINI", "${PINI='NO'}")
+epicsEnvSet("RVAL", "${RVAL='VAL'}")
+epicsEnvSet("HASH", "${HASH='#'}")
+
 ## Register all support components
 dbLoadDatabase "dbd/alarmDemo.dbd"
 alarmDemo_registerRecordDeviceDriver pdbbase
@@ -19,7 +23,8 @@ py "import alarm"
 py "alarm.build()"
 
 ## Load record instances
-dbLoadRecords("db/alarm.db","P=")
+dbLoadRecords("db/alarm.db","PINI=${PINI}, RVAL=${RVAL}, HASH=${HASH}")
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
+dbDumpRecord > dbDumpRecord.log
