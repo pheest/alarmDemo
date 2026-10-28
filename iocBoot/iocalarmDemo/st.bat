@@ -24,7 +24,7 @@ dir /b %TOP%\python3* > %TEMP%\py_build_ver.txt
 set /p py_build_ver= < %TEMP%\py_build_ver.txt
 REM See https://ss64.com/nt/syntax-replace.html
 set "py3_ver=%py_build_ver:python3=%"
-py -3.%py3_ver% -c "import os, sys; print(os.path.dirname(sys.executable))" > %TEMP%\py_path.txt
+c:\Windows\py -3.%py3_ver% -c "import os, sys; print(os.path.dirname(sys.executable))" > %TEMP%\py_path.txt
 set /p py_path= < %TEMP%\py_path.txt
 set PATH=C:\Windows\system32;%py_path%
 popd

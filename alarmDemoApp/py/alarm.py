@@ -6,7 +6,7 @@ from devsup.db import getRecord
 import signal
 import sys
 import numpy as np
-from threading import Thread, Event, Lock
+from threading import Thread, Event
 
 
 class AlarmTest(PT.TableBase):
@@ -134,57 +134,55 @@ class AlarmTest(PT.TableBase):
         self.set_alarm(self.aao)
         ao = getRecord("AO")
         if ao.scan is not None and self.count is not None:
-                # Note that the RVAL field for the AO type does not accept float values
-                # as it is aimed at use by A to D converters
             ao.VAL = float(self.count)
             ao.scan(sync=False, force=0)
 
     def proc_out_ao(self):
         self.set_alarm(self.ao)
         bo = getRecord("BO")
-        if bo.VAL is not None and self.count is not None:
+        if bo.scan is not None and self.count is not None:
             bo.VAL = self.count % 2
             bo.scan(sync=False, force=0)
 
     def proc_out_bo(self):
         self.set_alarm(self.bo)
         int64out = getRecord("INT64OUT")
-        if int64out.VAL is not None and self.count is not None:
+        if int64out.scan is not None and self.count is not None:
             int64out.VAL = self.count
             int64out.scan(sync=False, force=0)
 
     def proc_out_int64out(self):
         self.set_alarm(self.int64out)
         longout = getRecord("LONGOUT")
-        if longout.VAL is not None and self.count is not None:
+        if longout.scan is not None and self.count is not None:
             longout.VAL = self.count
             longout.scan(sync=False, force=0)
 
     def proc_out_longout(self):
         self.set_alarm(self.longout)
         lso = getRecord("LSO")
-        if lso.VAL is not None and self.count is not None:
+        if lso.scan is not None and self.count is not None:
             lso.VAL = str(self.count)
             lso.scan(sync=False, force=0)
 
     def proc_out_lso(self):
         self.set_alarm(self.lso)
         mbboDirect = getRecord("MBBODIRECT")
-        if mbboDirect.VAL is not None and self.count is not None:
+        if mbboDirect.scan is not None and self.count is not None:
             mbboDirect.VAL = self.count
             mbboDirect.scan(sync=False, force=0)
         
     def proc_out_mbboDirect(self):
         self.set_alarm(self.mbboDirect)
         mbbo = getRecord("MBBO")
-        if mbbo.VAL is not None and self.count is not None:
+        if mbbo.scan is not None and self.count is not None:
             mbbo.VAL = self.count % 16      # 0..15 values available
             mbbo.scan(sync=False, force=0)
         
     def proc_out_mbbo(self):
         self.set_alarm(self.mbbo)
         stringout = getRecord("STRINGOUT")
-        if stringout.VAL is not None and self.count is not None:
+        if stringout.scan is not None and self.count is not None:
             stringout.VAL = str(self.count)
             stringout.scan(sync=False, force=0)
         
